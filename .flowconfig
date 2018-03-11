@@ -1,0 +1,16 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[options]
+emoji=true
+
+munge_underscores=true
+
+suppress_type=$FlowIssue
+suppress_type=$FlowFixMe
+
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe

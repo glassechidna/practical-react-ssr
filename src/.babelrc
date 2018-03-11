@@ -1,0 +1,36 @@
+{
+	"env": {
+		"development": {
+			"presets": [
+				[
+					"@babel/preset-env",
+					{
+						"targets": {
+							"node": "current"
+						}
+					}
+				]
+			]
+		},
+		"production": {
+			"presets": [
+				[
+					"@babel/preset-env",
+					{
+						"modules": false
+					}
+				]
+			]
+		}
+	},
+	"presets": [
+		"@babel/stage-3",
+		"@babel/flow",
+		"@babel/react"
+	],
+	"plugins": [
+		"@babel/plugin-proposal-class-properties",
+		"@babel/transform-runtime",
+		"react-hot-loader/babel"
+	]
+}

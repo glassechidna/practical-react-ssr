@@ -1,0 +1,14 @@
+# OSX
+.DS_Store
+
+# IntelliJ
+.idea/
+
+# node.js
+node_modules/
+
+# dotenv (private)
+/.env
+
+# build
+/dist
