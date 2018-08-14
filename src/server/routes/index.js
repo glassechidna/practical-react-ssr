@@ -23,7 +23,7 @@ export type ServerRoute = {|
 	loadData?: LoadData
 |}
 
-async function setReduxUser(dispatch: Dispatch, req: $Request, res: $Response) {
+async function setReduxUser(dispatch: Dispatch, req: $Subtype<$Request>, res: $Response) {
 	if (req.user) {
 		const user = ((req.user: any): ?User)
 

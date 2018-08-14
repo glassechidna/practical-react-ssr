@@ -44,13 +44,15 @@ const commonRules = [
 				options: {
 					cacheDirectory: true,
 					presets: [
-						'@babel/preset-env',
-						'@babel/stage-3',
+						'@babel/env',
 						'@babel/flow',
 						'@babel/react',
 					],
 					plugins: [
+						'@babel/plugin-syntax-dynamic-import',
+						'@babel/plugin-syntax-import-meta',
 						'@babel/plugin-proposal-class-properties',
+						'@babel/plugin-proposal-json-strings',
 						'@babel/transform-runtime',
 						'react-hot-loader/babel',
 					],
