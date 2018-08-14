@@ -90,7 +90,18 @@ the seed user's credentials before deploying anything to production.
 
 ## Build / Execution
 
+### Run/Debug
+
+```
+yarn debug
+```
+
+You may now open your browser to `http://localhost:8080` and proceed to login, assuming you've seeded the database or
+created a user from the console.
+
 ### Build
+
+To build a production bundle:
 
 ```
 yarn build
@@ -98,12 +109,13 @@ yarn build
 
 ### Execution
 
+To run in production:
+
 ```
 yarn start
 ```
 
-You may now open your browser to `http://localhost:8080` and proceed to login, assuming you've seeded the database or
-created a user from the console.
+Keep in mind that we've provided a `.env.development`, but not a `.env.production`. You'll need to configure environment variables yourself using `.env.development` as reference.
 
 ### Analyze browser bundle size
 
