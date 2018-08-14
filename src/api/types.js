@@ -65,6 +65,10 @@ export class AsyncStates {
 	}
 }
 
+export function isAsyncStateComplete(state : AsyncState) {
+	return state.status === AsyncStatus.DONE || state.status === AsyncStatus.FAILED
+}
+
 export type User = {
 	id: number,
 	email: string,
