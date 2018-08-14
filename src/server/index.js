@@ -25,9 +25,13 @@ import createHistory from 'history/createMemoryHistory'
 import createStore from '../store'
 
 import { create as createJss } from 'jss'
-import jssPreset from 'jss-preset-default'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { SheetsRegistry } from 'react-jss/lib/jss'
+
+import {
+	createGenerateClassName,
+	jssPreset,
+} from '@material-ui/core/styles'
 
 
 import styles from '../app/index.css'
@@ -56,6 +60,9 @@ const port = parseInt(process.env.PORT || 8080)
 
 const flattenedRoutes : ServerRoute[] = flattenRoutes(routes)
 
+const jss = createJss(jssPreset())
+jss.options.createGenerateClassName = createGenerateClassName
+
 function renderHtml(html: string, css: string, preloadedState: AppState, title = 'Glass Echidna React SSR Template') {
 	return `
 	<!doctype html>
@@ -82,8 +89,6 @@ function render(req: $Subtype<$Request>, res: $Response) {
 
 	const store = createStore(history)
 
-	const jss = createJss(jssPreset())
-
 	const sheetsRegistry = new SheetsRegistry()
 
 	const matchedRoute = flattenedRoutes.find(route => matchPath(req.url, routeProps(route)))
@@ -99,7 +104,7 @@ function render(req: $Subtype<$Request>, res: $Response) {
 			<AppContainer>
 				<Provider store={store}>
 					<JssProvider registry={sheetsRegistry} jss={jss}>
-						<App history={history} url={req.url}/>
+						<App history={history} url={req.url} sheetsManager={new Map()}/>
 					</JssProvider>
 				</Provider>
 			</AppContainer>,

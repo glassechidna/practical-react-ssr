@@ -10,7 +10,16 @@ import { ConnectedRouter } from 'react-router-redux'
 
 import PropTypes from 'prop-types'
 
+import 'typeface-roboto'
+
+import {
+	MuiThemeProvider,
+	createMuiTheme,
+} from '@material-ui/core/styles'
+
+
 import './index.css'
+import theme from './styling/theme'
 
 import routes, {
 	routeProps,
@@ -22,6 +31,7 @@ import type { Route } from '../routes'
 
 export type Props = {
 	history: any,
+	sheetsManager?: Map<any, any>,
 }
 
 class App extends Component<Props> {
@@ -49,17 +59,19 @@ class App extends Component<Props> {
 	}
 
 	render() {
-		const history = this.props.history
+		const {history, sheetsManager} = this.props
 
 		return (
-			<ConnectedRouter history={history}>
-				<Switch>
-					{Object.values(routes).map(route => {
-						const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
-						return <SwitchRoute {...otherProps} path={path} key={path}/>
-					})}
-				</Switch>
-			</ConnectedRouter>
+			<MuiThemeProvider theme={createMuiTheme(theme)} sheetsManager={sheetsManager}>
+				<ConnectedRouter history={history}>
+					<Switch>
+						{Object.values(routes).map(route => {
+							const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
+							return <SwitchRoute {...otherProps} path={path} key={path}/>
+						})}
+					</Switch>
+				</ConnectedRouter>
+			</MuiThemeProvider>
 		)
 	}
 }

@@ -25,6 +25,8 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.0.0-rc.1",
+		"@material-ui/core": "^1.5.0",
+		"@material-ui/icons": "^2.0.2",
 		"bcrypt": "^3.0",
 		"body-parser": "^1.18.2",
 		"cookie-session": "^2.0.0-beta.3",
@@ -47,6 +49,7 @@
 		"sequelize": "^4.36.0",
 		"sequelize-cli": "^4.0.0",
 		"serialize-javascript": "^1.4.0",
+		"typeface-roboto": "^0.0.54",
 		"uuid": "^3.2.1"
 	},
 	"devDependencies": {

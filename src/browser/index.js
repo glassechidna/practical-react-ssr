@@ -17,9 +17,15 @@ import createStore from '../store'
 // JSS
 
 import { create as createJss } from 'jss'
-import jssPreset from 'jss-preset-default'
 
 import JssProvider from 'react-jss/lib/JssProvider'
+
+// Material UI
+
+import {
+	createGenerateClassName,
+	jssPreset,
+} from '@material-ui/core/styles'
 
 
 const preloadedState = window.__PRELOADED_STATE__
@@ -28,8 +34,10 @@ delete window.__PRELOADED_STATE__
 const history = createHistory()
 const store = createStore(history, preloadedState)
 
+const jss = createJss(jssPreset())
+jss.options.createGenerateClassName = createGenerateClassName
+
 function render(AppComponent: any) {
-	const jss = createJss(jssPreset())
 
 	return (
 		<AppContainer>
