@@ -38,14 +38,15 @@ import App from '../app'
 
 import api from './api' // Non-react routes
 import routes, { flattenRoutes } from './routes'
+import { routeProps } from '../routes'
 
 import { passport, session } from './authentication/passport'
 
 
 import type { $Request, $Response, NextFunction } from 'express'
-import type { Route } from 'react-router'
 
 import type { AppState } from '../reducers'
+import type { ServerRoute } from './routes'
 
 
 const PROD = process.env.NODE_ENV === 'production'
@@ -53,7 +54,7 @@ const PROD = process.env.NODE_ENV === 'production'
 const app = Express()
 const port = parseInt(process.env.PORT || 8080)
 
-const flattenedRoutes = flattenRoutes(routes)
+const flattenedRoutes : ServerRoute[] = flattenRoutes(routes)
 
 function renderHtml(html: string, css: string, preloadedState: AppState, title = 'Glass Echidna React SSR Template') {
 	return `
@@ -85,7 +86,7 @@ function render(req: $Subtype<$Request>, res: $Response) {
 
 	const sheetsRegistry = new SheetsRegistry()
 
-	const matchedRoute = flattenedRoutes.find(route => matchPath(req.url, ((route: any): Route)))
+	const matchedRoute = flattenedRoutes.find(route => matchPath(req.url, routeProps(route)))
 	const promises = []
 
 	if (matchedRoute && matchedRoute.loadData) {

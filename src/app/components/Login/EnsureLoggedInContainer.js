@@ -32,7 +32,7 @@ class EnsureLoggedInContainer extends Component<InnerProps> {
 		if (this.props.isLoggedIn) {
 			return this.props.children
 		} else {
-			return <Redirect to={routes.LOGIN.path}/>
+			return <Redirect to={routes.LOGIN.path()}/>
 		}
 	}
 }

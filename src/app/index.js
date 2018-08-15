@@ -2,12 +2,21 @@
 
 import React, { Component } from 'react'
 
-import { Route, Switch } from 'react-router-dom'
+import {
+	Route as SwitchRoute,
+	Switch,
+} from 'react-router-dom'
 import { ConnectedRouter } from 'react-router-redux'
 
 import PropTypes from 'prop-types'
 
-import routes from '../routes'
+import routes, {
+	routeProps,
+} from '../routes'
+
+
+import type { Route } from '../routes'
+
 
 export type Props = {
 	history: any,
@@ -43,9 +52,10 @@ class App extends Component<Props> {
 		return (
 			<ConnectedRouter history={history}>
 				<Switch>
-					{Object.values(routes).map(route => (
-						<Route {...route} key={(route: $FlowIssue).path}/>
-					))}
+					{Object.values(routes).map(route => {
+						const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
+						return <SwitchRoute {...otherProps} path={path} key={path}/>
+					})}
 				</Switch>
 			</ConnectedRouter>
 		)

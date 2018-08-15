@@ -45,7 +45,7 @@ class LoginForm extends Component<InnerProps, State> {
 
 	render() {
 		if (this.props.loggedIn) {
-			return (<Redirect to={routes.DASHBOARD.path}/>)
+			return (<Redirect to={routes.DASHBOARD.path()}/>)
 		}
 
 		return (

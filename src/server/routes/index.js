@@ -34,6 +34,7 @@ async function setReduxUser(dispatch: Dispatch, req: $Subtype<$Request>, res: $R
 }
 
 const serverRoutes: RouteMap<ServerRoute> = {
+	...routes,
 	LOGIN: {
 		...routes.LOGIN,
 		loadData: [setReduxUser],

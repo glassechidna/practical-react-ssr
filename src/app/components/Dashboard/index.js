@@ -3,18 +3,19 @@
 import React, { Component } from 'react'
 
 import {
-	Route,
+	Route as SwitchRoute,
 	Switch,
 } from 'react-router-dom'
 
-import routes from '../../../routes'
+
+import routes, { routeProps } from '../../../routes'
 
 import EnsureLoggedInContainer from '../Login/EnsureLoggedInContainer'
 
 
 import type { Location } from 'react-router'
 
-import type { Route as RouteType } from '../../../routes'
+import type { Route } from '../../../routes'
 
 
 type Props = {
@@ -26,9 +27,10 @@ class Dashboard extends Component<Props> {
 		return (
 			<EnsureLoggedInContainer>
 				<Switch>
-					{Object.values(routes.DASHBOARD.subroutes).map(route => (
-						<Route {...route} key={((route: any): RouteType).path}/>
-					))}
+					{Object.values(routes.DASHBOARD.subroutes).map(route => {
+						const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
+						return <SwitchRoute {...otherProps} path={path} key={path}/>
+					})}
 				</Switch>
 			</EnsureLoggedInContainer>
 		)
