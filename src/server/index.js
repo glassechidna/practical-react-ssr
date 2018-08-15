@@ -30,7 +30,7 @@ import JssProvider from 'react-jss/lib/JssProvider'
 import { SheetsRegistry } from 'react-jss/lib/jss'
 
 
-import styles from './index.css'
+import styles from '../app/index.css'
 
 import './db'
 

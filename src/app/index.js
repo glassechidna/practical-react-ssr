@@ -10,6 +10,8 @@ import { ConnectedRouter } from 'react-router-redux'
 
 import PropTypes from 'prop-types'
 
+import './index.css'
+
 import routes, {
 	routeProps,
 } from '../routes'
