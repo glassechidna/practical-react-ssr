@@ -60,6 +60,7 @@
 		"@babel/preset-flow": "^7.0.0-rc.1",
 		"@babel/preset-react": "^7.0.0-rc.1",
 		"@babel/register": "^7.0.0-rc.1",
+		"asset-require-hook": "^1.2.0",
 		"babel-loader": "^8.0.0-beta.0",
 		"css-loader": "^1.0.0",
 		"css-modules-require-hook": "^4.2.2",

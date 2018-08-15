@@ -16,7 +16,7 @@ import webpackNodeExternals from 'webpack-node-externals'
 
 const SERVER_HOST = process.env.SERVER_HOST || 'http://localhost:8080'
 
-const fileExtensions = {
+export const fileExtensions = {
 	fonts: [
 		'eot',
 		'otf',
