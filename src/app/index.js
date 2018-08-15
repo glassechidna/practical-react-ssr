@@ -22,8 +22,11 @@ import './index.css'
 import theme from './styling/theme'
 
 import routes, {
+	flattenRoutes,
 	routeProps,
 } from '../routes'
+
+import ResponsiveDrawer from './components/ResponsiveDrawer'
 
 
 import type { Route } from '../routes'
@@ -64,12 +67,18 @@ class App extends Component<Props> {
 		return (
 			<MuiThemeProvider theme={createMuiTheme(theme)} sheetsManager={sheetsManager}>
 				<ConnectedRouter history={history}>
-					<Switch>
-						{Object.values(routes).map(route => {
-							const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
-							return <SwitchRoute {...otherProps} path={path} key={path}/>
-						})}
-					</Switch>
+					<ResponsiveDrawer
+						routes={flattenRoutes(routes)}
+						location={history.location}
+						alwaysOpenInLargeWindows={false}
+					>
+						<Switch>
+							{Object.values(routes).map(route => {
+								const {path, ...otherProps} = routeProps(((route: $FlowIssue): Route))
+								return <SwitchRoute {...otherProps} path={path} key={path}/>
+							})}
+						</Switch>
+					</ResponsiveDrawer>
 				</ConnectedRouter>
 			</MuiThemeProvider>
 		)

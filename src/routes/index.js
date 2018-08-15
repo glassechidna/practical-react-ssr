@@ -10,6 +10,8 @@ import Dashboard from '../app/components/Dashboard'
 
 import type { Location } from 'react-router'
 
+import { Dashboard as DashboardIcon } from '@material-ui/icons'
+
 
 import type { AppState } from '../reducers'
 
@@ -142,6 +144,7 @@ export default propagatePaths({
 	DASHBOARD: {
 		path: () => '/',
 		component: Dashboard,
+		icon: DashboardIcon,
 		title: () => 'Dashboard',
 		subroutes: {
 			HOME: {
